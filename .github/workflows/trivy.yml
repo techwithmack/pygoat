@@ -17,5 +17,3 @@ jobs:
         with:
           scan-type: "fs"
           scan-ref: .
-          format: 'template'
-          template: "@path/to/my_template.tpl"
