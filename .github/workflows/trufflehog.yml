@@ -1,4 +1,4 @@
-name: TruffleHog OSS
+name: Secrets detection
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
   pull_request:
 jobs:
   build:
-    name: Build
+    name: TruffleHog OSS
     runs-on: ubuntu-24.04
     steps:
       - name: TruffleHog OSS
