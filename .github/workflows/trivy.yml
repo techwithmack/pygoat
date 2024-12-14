@@ -1,20 +1,24 @@
-name: build
+name: SCA
 on:
   push:
     branches:
     - main
   pull_request:
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-20.04
+  fs-scan:
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Run Trivy vulnerability scanner in fs mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-types: 'fs'
+          scan-ref: '.'
+          trivy-config: trivy.yaml
+          name: set up QEMU 
+          uses: docker/setup-qemu-action@v2
+          
 
-    - name: Run Trivy vulnerability scanner in fs mode
-      uses: aquasecurity/trivy-action@0.28.0
-      with:
-        scan-type: 'fs'
-        scan-ref: '.'
-        trivy-config: trivy.yaml
